@@ -28,5 +28,5 @@ Dengan kriteria diatas, kami membuat CSS-X.
 3. **Open-source:** anda bebas mengembangkan CSS-X, agar cocok dengan keperluan anda.
 
 # Kontributor
-1. @rama-adi : lead programmer
+1. [@rama-adi](https://github.com/rama-adi) : lead programmer
 2. ...
