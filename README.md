@@ -34,5 +34,5 @@ Dengan kriteria diatas, kami membuat CSS-X.
 3. ... dan banyak fitur lain yang akan datang!
 
 # Kontributor
-1. [@rama-adi](https://github.com/rama-adi) : lead programmer
-2. ...
+1. [GITHUB: @rama-adi](https://github.com/rama-adi) : lead programmer
+2. [IG: @simple_vann](https://instagram.com/simple_vann) : Artwork splash screen
