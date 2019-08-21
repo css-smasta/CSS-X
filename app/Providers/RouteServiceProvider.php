@@ -36,7 +36,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
+        $this->mapApiV0Routes();
+        $this->mapPengurusRoutes();
         $this->mapWebRoutes();
 
         //
@@ -56,6 +57,25 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/web.php'));
     }
 
+    protected function mapPengurusRoutes()
+    {
+        Route::middleware(['web','isPengurus','auth'])
+            ->namespace($this->namespace.'\Pengurus')
+            ->prefix('/pengurus')
+            ->group(base_path('routes/pengurus.php'));
+    }
+
+    /*
+     * Pseudo-API dengan memanfaatkan web middleware
+     *
+     */
+    protected function mapApiV0Routes()
+    {
+        Route::middleware(['web', 'auth'])
+            ->namespace($this->namespace. '\webApiV0')
+            ->prefix('webapi/v0')
+            ->group(base_path('routes/webApiv0.php'));
+    }
     /**
      * Define the "api" routes for the application.
      *

@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index_welcome');
+});
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth', 'checkVerified'])->group(function(){
+
+    Route::prefix('home')->group(function () {
+            Route::get('latihan/{id}' ,'LatihanController@lihat_latihan' );
+            Route::post('latihan/{id}', 'LatihanController@upload_latihan');
+            // Route submisi
+            Route::get('/submission/{id}', '');
+    });
+
 });
