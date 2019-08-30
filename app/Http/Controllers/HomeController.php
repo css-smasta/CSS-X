@@ -49,6 +49,7 @@ class HomeController extends Controller
                     'task'          => Exercise::where('course_archived', false)->get(),
                     'pendingsub'    => Submission::where('is_checked', false)->where('is_accepted', false)->where('user_id', Auth::user()->id)->get(),
                     'pending_count' => Submission::where('is_checked', false)->where('is_accepted', false)->where('user_id', Auth::user()->id)->count(),
+                    'failed_task' => Submission::where('is_checked', true)->where('is_accepted', false)->where('user_id', Auth::user()->id)->get(),
                     'reviewed_s'    => Submission::where('user_id', Auth::user()->id)->where('score_achieved', '>', 0)->count(),
                 ]
             );

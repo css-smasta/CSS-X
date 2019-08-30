@@ -2,7 +2,8 @@
     <div id="app">
         <main class="main-content">
             @include('layouts.includes.navbar')
-           <div class="mt-4">
+            <div class="pt-5">
+                <div style="height: 50px;"></div>
                @yield('content')
            </div>
 

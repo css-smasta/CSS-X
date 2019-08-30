@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar fixed-top navbar-expand-md navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/home') }}">
-            <img style="max-height: none;"
-                 src="@if (@session('themeMode') == 'dark'){{ asset('img/css-white.png') }} @else {{ asset('img/csslogo.png') }} @endif"
+            <img class="mr-2" style="max-height: none;"
+                 src="@if (@session('themeMode') == 'dark'){{ config('css-x.css-x-logo.dark') }} @else {{ asset('img/csslogo.png') }} @endif"
                  width="40" height="40">
             {{ config('app.name', 'Laravel') }}&nbsp;<span class="badge badge-soft-warning">Beta 2</span>
         </a>
@@ -66,7 +66,7 @@
 
                                                 <!-- Title -->
                                                 <h5 class="card-header-title">
-                                                   Notifikasi
+                                                    {{ __('dashboard.notification') }}
                                                 </h5>
 
                                             </div>
@@ -109,14 +109,16 @@
 
                             <!-- Menu -->
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="{{ url('/home') }}">{{ __('Dashboard') }}
+                                <a class="dropdown-item" href="{{ url('/home') }}">
+                                    {{ __('dashboard.main_page') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ url('/home/edit-profile') }}">{{ __('Edit Profil') }}
+                                <a class="dropdown-item" href="{{ url('/home/edit-profile') }}">
+                                    {{ __('dashboard.profile.edit') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('dashboard.logout') }}
                                 </a>
 
 

@@ -23,7 +23,8 @@ Route::middleware(['auth', 'checkVerified'])->group(function(){
             Route::get('latihan/{id}' ,'LatihanController@lihat_latihan' );
             Route::post('latihan/{id}', 'LatihanController@upload_latihan');
             // Route submisi
-            Route::get('/submission/{id}', '');
+        Route::get('/submisi/{id}', 'LatihanController@lihat_submisi');
+        Route::get('/submisi/{id}/revisi', 'LatihanController@form_revisi_submisi');
+        Route::put('/submisi/{id}/revisi', 'LatihanController@revisi_submisi');
     });
-
 });

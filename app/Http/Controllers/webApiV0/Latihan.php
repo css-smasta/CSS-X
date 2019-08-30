@@ -17,13 +17,6 @@ class Latihan extends Controller
             'user' => 'required',
             'deskripsi'  => 'required',
             'maks_poin'   => 'numeric|required|max:100',
-        ], [
-            'required' => 'Kolom :attribute harus diisi!',
-            'max' => [
-                'numeric'  => 'Kolom :attribute melebihi angka maksimum (:max)',
-                'string'   => 'Kolom :attribute melebihi batas teks maksimum (:max)'
-
-            ]
         ]);
 
         Exercise::create([

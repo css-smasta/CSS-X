@@ -6,7 +6,7 @@
                     <i class="{{$card_icon}}"></i> {{$card_text}}
                 </h6>
                 <span class="h2 mb-0">
-                    {{$card_body}}
+                    {!! $card_body !!}
                 </span>
             </div>
         </div>

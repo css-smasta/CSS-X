@@ -15,26 +15,25 @@
                 </div>
             </div>
             <div class="p-2">
-                <h3 style="margin-bottom: 0px;">Selamat datang,</h3>
+                <h3 style="margin-bottom: 0px;">{{__('dashboard.welcome')}}</h3>
                 <h1 style="margin-bottom: 0px;">
                     {{Auth::user()->name}}
                     @if (Auth::user()->role_lvl == 2)
-                        <i class="fas fa-check-circle" style="color: #00d97e" title="Pengurus CSS"></i>
+                        <i class="fas fa-check-circle" style="color: #00d97e"></i>
                     @elseif(Auth::user()->role_lvl == 3)
-                        <i class="fas fa-tools" style="color: #e63757" title="RAMA CUY WATDEFAK"></i>
+                        <i class="fas fa-tools" style="color: #e63757"></i>
 
                     @else
-                        <i class="fas fa-check-circle" style="color: #6e84a3"
-                           title="Anggota. Dikasi centang biar seneng aja kayak verified h3h3h3h3"></i>
+                        <i class="fas fa-check-circle" style="color: #6e84a3"></i>
                     @endif
                 </h1>
                 <p style="margin-bottom: 0px;">
                     @if (Auth::user()->role_lvl == 2)
-                       Pengurus CSS
+                        {{__('dashboard.ranks.manager')}}
                     @elseif(Auth::user()->role_lvl == 3)
-                        Administrator CSS-X
+                        {{__('dashboard.ranks.admin')}}
                     @else
-                       Anggota CSS
+                        {{__('dashboard.ranks.member')}}
                     @endif
                 </p>
             </div>
@@ -42,16 +41,20 @@
         <hr>
         <div>
             <a href="/pengurus/dashboard" class="btn btn-white mr-2 mt-3">
-                <span class="fas fa-address-card"></span> Dashboard Pengurus
+                <span class="fas fa-address-card"></span>
+                {{__('dashboard.main_page_btn.manager_dashboard')}}
             </a>
             <a href="#" class="btn btn-white mr-2 mt-3">
-                <span class="fas fa-globe-asia"></span> Laman Profilmu
+                <span class="fas fa-globe-asia"></span>
+                {{__('dashboard.main_page_btn.profile_page')}}
             </a>
             <a href="#" class="btn btn-white mr-2 mt-3">
-                <span class="fas fa-user-edit"></span> Pengaturan Akun
+                <span class="fas fa-user-edit"></span>
+                {{__('dashboard.main_page_btn.account_settings')}}
             </a>
             <a href="#" class="btn btn-white mr-2 mt-3">
-                <span class="fas fa-users"></span> Daftar Anggota CSS
+                <span class="fas fa-users"></span>
+                {{__('dashboard.main_page_btn.member_list')}}
             </a>
         </div>
         <div class="row mt-3">
@@ -59,20 +62,20 @@
                 <div class="card-deck">
                     @include('layouts.snippets.card', [
                         'card_icon' => 'fas fa-star',
-                        'card_text' => 'Skor anda',
+                        'card_text' => __('dashboard.main_page_cards.your_score'),
                         'card_body' => $score
                     ])
 
                     @include('layouts.snippets.card', [
                         'card_icon' => 'fas fa-chart-line',
-                        'card_text' => 'Peringkat',
+                        'card_text' =>  __('dashboard.main_page_cards.your_ranks'),
                         'card_body' => '1'
                     ])
 
                     @include('layouts.snippets.card', [
                         'card_icon' => 'fas fa-user',
-                        'card_text' => 'Kepengurusan',
-                        'card_body' => Auth::user()->role_lvl > 2 ? 'Pengurus CSS' : 'Anggota CSS'
+                        'card_text' => __('dashboard.main_page_cards.your_management'),
+                        'card_body' => Auth::user()->role_lvl > 2 ? __('dashboard.ranks.manager') : __('dashboard.ranks.member')
                     ])
 
                 </div>
@@ -81,17 +84,17 @@
                 <div class="card-deck" style="height: 100%;">
                     @include('layouts.snippets.card', [
                         'card_icon' => 'fas fa-chart-line',
-                        'card_text' => 'Tugas dikerjakan',
+                        'card_text' => __('dashboard.main_page_cards.tasks.done'),
                         'card_body' => $done_proj
                     ])
                     @include('layouts.snippets.card', [
                         'card_icon' => 'fas fa-chart-line',
-                        'card_text' => 'Belum di review',
+                        'card_text' => __('dashboard.main_page_cards.tasks.unreviewed'),
                         'card_body' => $pending_count
                     ])
                     @include('layouts.snippets.card', [
                        'card_icon' => 'fas fa-chart-line',
-                       'card_text' => 'Sudah di review',
+                       'card_text' => __('dashboard.main_page_cards.tasks.reviewed'),
                        'card_body' => $reviewed_s
                    ])
                 </div>
@@ -103,7 +106,7 @@
 
             <div class="col-md-6 col-xs-12">
                 <div class="card">
-                    <div class="card-header">Semua tugas</div>
+                    <div class="card-header">{{__('dashboard.all_task')}}</div>
                     <div class="card-body">
                         <ul>
                             @foreach ($task as $ts)
@@ -122,13 +125,13 @@
 
             <div class="col-md-6 col-xs-12">
                 <div class="card">
-                    <div class="card-header">Tugas yang sudah di review</div>
+                    <div class="card-header">{{__('dashboard.main_page_cards.tasks.reviewed')}}</div>
                     <div class="card-body">
                         <div class="list-group">
 
                             @foreach ($reviewed as $rw)
-                                <a href="/home/review/{{$rw->id}}"
-                                   class="list-group-item list-group-item-action">{{ $rw->courses->course_name }}</a>
+                                <a href="/home/submisi/{{$rw->id}}"
+                                   class="list-group-item list-group-item-action">{{ $rw->exercises->exercise_name }}</a>
                             @endforeach
 
                         </div>
@@ -139,13 +142,13 @@
         <div class="row mt-3">
             <div class="col-md-6 col-xs-12">
                 <div class="card card-inactive">
-                    <div class="card-header">Tugas yang belum di review</div>
+                    <div class="card-header">{{__('dashboard.main_page_cards.tasks.unreviewed')}}</div>
 
                     <div class="card-body">
 
                         <div class="list-group">
                             @foreach ($pendingsub as $ps)
-                                <a href="/home/submission/{{$ps->id}}"
+                                <a href="/home/submisi/{{$ps->id}}"
                                    class="list-group-item list-group-item-action">{{ $ps->exercises->exercise_name }}</a>
                             @endforeach
                         </div>
@@ -154,11 +157,12 @@
             </div>
             <div class="col-md-6 col-xs-12">
                 <div class="card card-inactive">
-                    <div class="card-header">Tugas anda yang tidak diterima (GAGAL)</div>
+                    <div class="card-header">{{__('dashboard.main_page_cards.tasks.failed')}}</div>
                     <div class="card-body">
-                        <div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> PERHATIAN: Segera
-                            perbaiki tugas anda sebelum latihan diarsipkan!
-                        </div>
+                        @foreach($failed_task as $ft)
+                            <a href="/home/submisi/{{$ft->id}}"
+                               class="list-group-item list-group-item-action">{{ $ft->exercises->exercise_name }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>

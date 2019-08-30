@@ -11,8 +11,8 @@
                 Informasi Latihan
             </div>
             <div class="card-body">
-            <h1 class="mb-0">{{$course->exercise_name}}</h1>
-            <p class="text-muted">Poin maksimal: {{$course->max_score}} poin </p>
+                <h1 class="mb-0">{{$course->exercise_name}}</h1>
+                <p class="text-muted">Poin maksimal: {{$course->max_score}} poin </p>
                 <hr>
                 <div class="mb-5">
                     {!! $course->description !!}
@@ -21,7 +21,7 @@
                     <form action="" method="POST" style="margin:20px;" enctype="multipart/form-data">
                         @csrf
                         <label for="course_fileupload">Upload tugas anda</label> <br>
-                        <input  type="file" name="course_file" id="course_fileupload" accept=".html,.jpg,.jpeg,.png"><br><br>
+                        <input type="file" name="course_file" id="course_fileupload" accept=".html,.jpg,.jpeg,.png"><br><br>
                         <p>Maksimal ukuran file: 2 Megabyte. <b>Lebih dari itu akan error.</b></p>
                         <button type="submit" class="btn btn-success">Upload tugas!</button>
                     </form>
