@@ -11,4 +11,7 @@
 */
 
 Route::get('/theme:{themeMode}', 'SetTheme@theme');
-Route::post('/latihan/simpan','Latihan@simpan')->name('apiv0.latihan.simpan');
+Route::middleware(['isPengurus'])->group(function () {
+    Route::post('/latihan/simpan', 'Latihan@simpan')->name('apiv0.latihan.simpan');
+    Route::put('/submisi/periksa/{id}', 'Submisi@periksa');
+});

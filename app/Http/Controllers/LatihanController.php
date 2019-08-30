@@ -93,11 +93,24 @@ class LatihanController extends Controller
     {
         @$submission = Submission::find($id);
         $reviewer;
+        $check_verdict;
         if ($submission->is_checked == true || $submission->is_accepted == false) {
             $reviewer = User::find($submission->reviewer_id);
         } else {
             $reviewer = 'belum di review';
         }
-        return view('latihan.lihat')->with('submission', $submission)->with('reviewer', $reviewer);
+        if ($submission->is_checked == true && $submission->is_accepted == true) {
+            $check_verdict = 'Sudah diterima';
+        } elseif ($submission->is_checked == true && $submission->is_accepted == false) {
+            $check_verdict = 'Ditolak';
+        } else {
+            $check_verdict = 'Belum diperiksa';
+        }
+        return view('latihan.lihat')->with('submission', $submission)->with(
+            [
+                'reviewer' => $reviewer,
+                'check_verdict' => $check_verdict
+            ]
+        );
     }
 }

@@ -39,7 +39,7 @@
                     @include('layouts.snippets.card', [
                        'card_icon' => 'fas fa-check',
                        'card_text' => 'Status Tugas',
-                       'card_body' => $submission->is_checked == true && $submission->is_accepted == true ? "Sudah diterima" : $submission->is_checked == true && $submission->is_accepted == false ? "Ditolak" : "Belum diperiksa!"
+                       'card_body' => $check_verdict
                    ])
                 </div>
             </div>

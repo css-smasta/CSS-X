@@ -45,16 +45,20 @@
 
                             </ol>
                         </div>
-                        <form action="" method="POST">
+                        <form id="periksaForm" action="{{url('webapi/v0/submisi/periksa/' . $submission->id)}}"
+                              method="POST">
                             <input name="_method" type="hidden" value="PUT">
+                            <input name="status" type="hidden" value="">
                             @csrf
                             <label for="sub_poin">Berikan poin</label>
                             <input type="text" class="form-control" name="sub_poin" id="sub_poin">
 
                             <label for="sub_notes">Evaluasi anda</label>
                             <textarea type="text" class="form-control" name="sub_notes" id="sub_notes"> </textarea>
-                            <button type="submit" class="mt-2 btn btn-success">Finalisasi</button>
-                            <button type="submit" class="mt-2 btn btn-danger" onclick="tolakSubmisi()">Tolak submisi</button>
+                            <button name="status" type="submit" value="TE" class="mt-2 btn btn-success">Finalisasi
+                            </button>
+                            <button name="status" type="submit" value="TO" class="mt-2 btn btn-danger">Tolak submisi
+                            </button>
                         </form>
                     </div>
             </div>
@@ -62,9 +66,10 @@
     </div>
 @endsection
 @section('scripts')
-    <script>
-        CKEDITOR.replace("sub_notes");
-    </script>
+            <script>
+                CKEDITOR.replace("sub_notes");
+            </script>
+            <script>
 
-            <script></script>
+            </script>
 @endsection
